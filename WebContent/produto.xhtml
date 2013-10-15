@@ -3,19 +3,27 @@
 		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:h="http://java.sun.com/jsf/html">
 	<h:head>
-		<title>Sistema de Notas Fiscais</title>
+		<title>Sistema de Notas Fiscais - UberDist</title>
+		<h:outputStylesheet library="css" name="style.css"/>
 	</h:head>
 
 	<h:body>
-		<h:form>
-		
+	<div id="conteudo">
+		<div id="cabecalho">
+			<h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
+		</div>
+		<div id="usuarioLogado">
+			Logado como: #{loginBean.usuario.login}
+		</div>
+		<h:form id="produtoForm">
 			<h2>
 				<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
 				<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />
 			</h2>
 			
+			<fieldset>
+			<legend>Dados do Produto</legend>
 			<h:inputHidden value="#{produtoBean.produto.id}" />
-			<h:panelGrid columns="2">
 				<h:outputLabel value="Nome:" for="nome"/>
 				<h:inputText id="nome" value="#{produtoBean.produto.nome}"/>
 				
@@ -24,12 +32,16 @@
 				
 				<h:outputLabel value="Preço:" for="preco"/>
 				<h:inputText id="preco" value="#{produtoBean.produto.preco}"/>
-				
-				<h:commandButton value="Gravar" action="#{produtoBean.grava}"/>
-			</h:panelGrid>
-	
-		
-		<h:dataTable value="#{produtoBean.produtos}" var="produto">
+							
+				<f:ajax execute=":produtoForm" render=":tabelaProdutos :produtoForm">
+					<h:commandButton event="click" action="#{produtoBean.grava}" value="Gravar"/>
+				</f:ajax>
+			</fieldset>				
+		</h:form>
+		<h2>Listagem de Produtos</h2>
+						
+		<h:form id="tabelaProdutos">
+		<h:dataTable value="#{produtoBean.produtos}" styleClass="dados" rowClasses="impar,par" var="produto">
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
 				#{produto.nome}
@@ -42,12 +54,19 @@
 			
 			<h:column>
 				<f:facet name="header">Ações</f:facet>
-				<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover" />
-				<h:commandLink action="#{produtoBean.remove(produto)}" value="Alterar">
+				<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover">
+					<f:ajax render="@form"/>
+				</h:commandLink>
+				<h:commandLink value="Alterar">
 					<f:setPropertyActionListener target="#{produtoBean.produto}" value="#{produto}"/>
 				</h:commandLink>		
 			</h:column>
 		</h:dataTable>
 		</h:form>
+	</div>
+	<div class="rodape">
+		Copyright 2013.
+		Todos os direitos reservados a Raphael A. Silva 
+	</div>
 	</h:body>
 </html>

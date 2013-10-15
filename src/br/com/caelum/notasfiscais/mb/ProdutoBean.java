@@ -24,7 +24,8 @@ public class ProdutoBean {
 		else
 			dao.atualiza(produto);
 		
-		produtos.add(produto);
+		//produtos.add(produto);
+		produtos = dao.listaTodos();
 		this.produto = new Produto();
 	}
 	
