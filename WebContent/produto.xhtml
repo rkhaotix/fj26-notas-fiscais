@@ -1,23 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
 		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:h="http://java.sun.com/jsf/html">
-	<h:head>
-		<title>Sistema de Notas Fiscais - UberDist</title>
-		<h:outputStylesheet library="css" name="style.css"/>
-	</h:head>
-
-	<h:body>
-	<div id="conteudo">
-		<div id="cabecalho">
-			<h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
-		</div>
-		<div id="usuarioLogado">
-			Logado como: #{usuarioLogadoBean.usuario.login} &nbsp;
-			<h:form>
-				<h:commandLink action="#{loginBean.logout}" value="Logout"/>
-			</h:form>
-		</div>
+		
+	<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
 		<h:form id="produtoForm">
 			<h2>
 				<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
@@ -67,10 +55,6 @@
 			</h:column>
 		</h:dataTable>
 		</h:form>
-	</div>
-	<div class="rodape">
-		Copyright 2013.
-		Todos os direitos reservados a Raphael A. Silva 
-	</div>
-	</h:body>
+	</ui:define>		
+	</ui:composition>	
 </html>
