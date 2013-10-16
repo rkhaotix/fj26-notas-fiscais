@@ -7,7 +7,7 @@
     
      <lifecycle>
     	<phase-listener>
-    		br.com.caelum.notasfiscais.listener.CicloDeVidaListener
+    		br.com.caelum.notasfiscais.listener.Autorizador
     	</phase-listener>
     </lifecycle>
 

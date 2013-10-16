@@ -13,7 +13,10 @@
 			<h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany"/>
 		</div>
 		<div id="usuarioLogado">
-			Logado como: #{usuarioLogadoBean.usuario.login}
+			Logado como: #{usuarioLogadoBean.usuario.login} &nbsp;
+			<h:form>
+				<h:commandLink action="#{loginBean.logout}" value="Logout"/>
+			</h:form>
 		</div>
 		<h:form id="produtoForm">
 			<h2>
@@ -57,6 +60,7 @@
 				<h:commandLink action="#{produtoBean.remove(produto)}" value="Remover">
 					<f:ajax render="@form"/>
 				</h:commandLink>
+				&nbsp; | &nbsp;
 				<h:commandLink value="Alterar">
 					<f:setPropertyActionListener target="#{produtoBean.produto}" value="#{produto}"/>
 				</h:commandLink>		
