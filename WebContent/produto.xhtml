@@ -23,7 +23,11 @@
 				<h:inputTextarea id="descricao"  value="#{produtoBean.produto.descricao}"/>
 				
 				<h:outputLabel value="Preço:" for="preco"/>
-				<h:inputText id="preco" value="#{produtoBean.produto.preco}"/>
+				<h:inputText id="preco" value="#{produtoBean.produto.preco}"
+							required="true" requiredMessage="Preço obrigatório"
+							validatorMessage="O valor mínimo é 0,50">
+							<f:validateDoubleRange minimum="0.50" />
+				</h:inputText>
 							
 				<f:ajax execute=":produtoForm" render=":tabelaProdutos :produtoForm">
 					<h:commandButton event="click" action="#{produtoBean.grava}" value="Gravar"/>
