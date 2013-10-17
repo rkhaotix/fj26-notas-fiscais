@@ -30,6 +30,7 @@ public class Autorizador implements PhaseListener {
 		}
 		
 		if(!usuarioLogado.isLogado()) {
+			System.out.println("usuário não logado");
 			handler.handleNavigation(context,  null, "login?faces-redirect=true");
 			context.renderResponse();
 		}

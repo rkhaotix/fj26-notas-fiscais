@@ -14,6 +14,9 @@
 			<div id="usuarioLogado">
 				<h:form rendered="#{usuarioLogadoBean.logado}">
 					Logado como: #{usuarioLogadoBean.usuario.login} &nbsp;
+					<h:commandLink action="/produto.xhtml" value="Produto"/>
+					<h:commandLink action="/notafiscal.xhtml" value="Nota Fiscal"/>
+					<h:commandLink action="/listanotas.xhtml" value="Lista Notas"/>					
 					<h:commandLink action="#{loginBean.logout}" value="Logout"/>
 				</h:form>
 			</div>

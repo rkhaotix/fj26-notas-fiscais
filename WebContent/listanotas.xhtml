@@ -9,17 +9,22 @@
 	<ui:define name="corpo">
   		<h:form>
   			<fieldset>
-  				<legend>Dados da nota</legend>
+  				<legend>Listagem de Notas Fiscais</legend>
   				
-  				<h:outputLabel value="CNPJ do Cliente:"/>
-  				<p:inputMask mask="99.999.999/9999-99" value="#{notaFiscalBean.notaFiscal.cnpj}"/>
+  				<p:dataTable value="#{listaNotasFiscaisBean.notasFiscais}"
+  				  			 var="notaFiscal" paginator="true" rows="5">
+  					<p:column headerText="CNPJ">
+  						#{notaFiscal.cnpj}
+  					</p:column>  			 
+  					<p:column headerText="Data">
+  						<h:outputText value="#{notaFiscal.data.time}">
+  							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+  						</h:outputText>
+  					</p:column>  			  				  			 
+  				</p:dataTable>
   				
-  				<h:outputLabel value="Data:"/>
-  				<p:calendar pattern="dd/MM/yyyy" value="#{notaFiscalBean.notaFiscal.data.time}"/>
   				
   			</fieldset> 
-  		 			
-  			<h:commandButton value="Avancar" action="#{notaFiscalBean.avancar}"/>
   		</h:form>
 	</ui:define>		
 	</ui:composition>		
