@@ -7,6 +7,7 @@
 	<ui:composition template="/_template.xhtml">
 	<ui:define name="corpo">
 		<h:form id="produtoForm">
+		<h:messages styleClass="erros"/>
 			<h2>
 				<h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
 				<h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />
