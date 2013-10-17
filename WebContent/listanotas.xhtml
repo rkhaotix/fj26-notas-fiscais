@@ -11,8 +11,9 @@
   			<fieldset>
   				<legend>Listagem de Notas Fiscais</legend>
   				
-  				<p:dataTable value="#{listaNotasFiscaisBean.notasFiscais}"
-  				  			 var="notaFiscal" paginator="true" rows="5">
+  				<p:dataTable value="#{listaNotasFiscaisBean.dataModel}"
+  				  			 var="notaFiscal" paginator="true" rows="5"
+  				  			 dynamic="true" lazy="true">
   					<p:column headerText="CNPJ">
   						#{notaFiscal.cnpj}
   					</p:column>  			 
